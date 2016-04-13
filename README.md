@@ -1,6 +1,6 @@
 ##Preview
 
-<img src="https://github.com/hkraji/weather-widget/blob/master/assets/images/weather_widget.png" width="450">
+<img src="https://github.com/hkraji/weather-widget/blob/master/assets/images/weather_widget.png" width="400px">
 
 ##Description
 
