@@ -24,7 +24,8 @@ Rest of the setting are commented in code and can be changed, this includes chan
 
 ##Contribution
 
-Special thanks goes to
+Special thanks to contributions from
 
 [David Underword](https://github.com/davefp) for providing original [weather widget](https://gist.github.com/davefp/4990174)
+
 [Christian Naths](https://github.com/christiannaths) for creating awesome [climacons font](http://adamwhitcroft.com/climacons/)
