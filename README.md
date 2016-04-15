@@ -20,7 +20,7 @@ In your dashing layout file add following snippet to add weather widget.
 ##Settings
 
 All customization is done in `weather.rb` job file. You will need to provide [CITY_ID](http://bulk.openweathermap.org/sample/city.list.json.gz) and register with OpenWeatherMap to get [API_KEY](http://openweathermap.org/appid).
-Rest of the setting are commented in code and can be changed, this includes changing climacons icons and colors. Contributions on more rich experience with these settings are welcomed.
+Rest of the settings are well commented in tje code and can be changed, this includes changing climacons icons and colors. Contributions on more rich experience with these settings are welcomed.
 
 ##Contribution
 
@@ -28,4 +28,4 @@ Special thanks to contributions from
 
 [David Underword](https://github.com/davefp) for providing original [weather widget](https://gist.github.com/davefp/4990174)
 
-[Christian Naths](https://github.com/christiannaths) for creating awesome [climacons font](http://adamwhitcroft.com/climacons/)
+[Adam Whitcroft](https://github.com/AdamWhitcroft) for creating awesome [climacons font](http://adamwhitcroft.com/climacons/)
