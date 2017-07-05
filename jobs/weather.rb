@@ -15,7 +15,7 @@ API_KEY = 'INSERT_KEY_HERE'
 SCHEDULER.every '15m', :first_in => 0 do |job|
 
   http = Net::HTTP.new('api.openweathermap.org')
-  response = http.request(Net::HTTP::Get.new("/data/2.5/group/?id=#{CITY_IDS}&units=#{UNITS}&appid=#{API_KEY}"))
+  response = http.request(Net::HTTP::Get.new("/data/2.5/group?id=#{CITY_IDS}&units=#{UNITS}&appid=#{API_KEY}"))
   
   next unless '200'.eql? response.code
   
