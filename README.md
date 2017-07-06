@@ -1,6 +1,6 @@
 ##Preview
 
-<img src="https://github.com/jezuk/weather-widget/blob/master/assets/images/weather_widget.png" width="400px">
+<img src="https://github.com/hkraji/weather-widget/blob/master/assets/images/weather_widget.png" width="400px">
 
 ##Description
 
@@ -20,7 +20,7 @@ In your dashing layout file add following snippet to add weather widget.  See be
 ##Settings
 
 You will need to provide [CITY_ID](http://bulk.openweathermap.org/sample/city.list.json.gz) and register with OpenWeatherMap to get [API_KEY](http://openweathermap.org/appid).
-Add each location ID to CITY_IDS in the `weather.rb` job file this must also match in the dashboard layout file above.
+Add each location ID to CITY_IDS in the `weather.rb` job file, these can then be used to replace xxxxxx in dashboard layout files.
 Rest of the settings are well commented in the code and can be changed, this includes changing climacons icons and colors. Any contributions to more rich experience with these settings are welcomed.
 
 ##Contribution
@@ -30,5 +30,3 @@ Special thanks to contributions from
 [David Underword](https://github.com/davefp) for providing original [weather widget](https://gist.github.com/davefp/4990174)
 
 [Adam Whitcroft](https://github.com/AdamWhitcroft) for creating awesome [climacons font](http://adamwhitcroft.com/climacons/)
-
-Forked from [Haris Krajina](https://github.com/hkraji)

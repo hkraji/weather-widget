@@ -22,8 +22,7 @@ SCHEDULER.every '15m', :first_in => 0 do |job|
   weather_data  = JSON.parse(response.body)
   
   weather_data['list'].each do |location|
-    puts location['name']
-    
+        
     detailed_info = location['weather'].first
     current_temp  = location['main']['temp'].to_f.round
     
