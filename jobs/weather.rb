@@ -1,30 +1,38 @@
 require 'net/http'
 
 # you can find CITY_ID here http://bulk.openweathermap.org/sample/city.list.json.gz
-CITY_ID = 2172517
+# 2643743 - London
+# 2950159 - Berlin
+
+CITY_IDS = '2643743,2950159' # no spaces
 
 # options: metric / imperial
 UNITS   = 'metric'
 
 # create free account on open weather map to get API key
-API_KEY = ENV['WEATHER_KEY']
+API_KEY = 'INSERT_KEY_HERE'
 
-SCHEDULER.every '20s', :first_in => 0 do |job|
+SCHEDULER.every '15m', :first_in => 0 do |job|
 
   http = Net::HTTP.new('api.openweathermap.org')
-  response = http.request(Net::HTTP::Get.new("/data/2.5/weather?id=#{CITY_ID}&units=#{UNITS}&appid=#{API_KEY}"))
-
+  response = http.request(Net::HTTP::Get.new("/data/2.5/group?id=#{CITY_IDS}&units=#{UNITS}&appid=#{API_KEY}"))
+  
   next unless '200'.eql? response.code
-
+  
   weather_data  = JSON.parse(response.body)
-  detailed_info = weather_data['weather'].first
-  current_temp  = weather_data['main']['temp'].to_f.round
+  
+  weather_data['list'].each do |location|
+        
+    detailed_info = location['weather'].first
+    current_temp  = location['main']['temp'].to_f.round
+    
+    send_event("weather-#{location['id']}", { :temp => "#{current_temp} &deg;#{temperature_units}",
+                            :condition => detailed_info['main'],
+                            :title => "#{location['name']}",
+                            :color => color_temperature(current_temp),
+                            :climacon => climacon_class(detailed_info['id'])})
+  end
 
-  send_event('weather', { :temp => "#{current_temp} &deg;#{temperature_units}",
-                          :condition => detailed_info['main'],
-                          :title => "#{weather_data['name']} Weather",
-                          :color => color_temperature(current_temp),
-                          :climacon => climacon_class(detailed_info['id'])})
 end
 
 
