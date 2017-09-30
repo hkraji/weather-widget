@@ -7,12 +7,14 @@ CITY_ID = 2172517
 UNITS   = 'metric'
 
 # create free account on open weather map to get API key
-API_KEY = ENV['WEATHER_KEY']
+API_KEY = 'WEATHER_KEY'
+
+LANG = 'en'
 
 SCHEDULER.every '20s', :first_in => 0 do |job|
 
   http = Net::HTTP.new('api.openweathermap.org')
-  response = http.request(Net::HTTP::Get.new("/data/2.5/weather?id=#{CITY_ID}&units=#{UNITS}&appid=#{API_KEY}"))
+  response = http.request(Net::HTTP::Get.new("/data/2.5/weather?id=#{CITY_ID}&units=#{UNITS}&appid=#{API_KEY}&lang=#{LANG}"))
 
   next unless '200'.eql? response.code
 
@@ -21,7 +23,7 @@ SCHEDULER.every '20s', :first_in => 0 do |job|
   current_temp  = weather_data['main']['temp'].to_f.round
 
   send_event('weather', { :temp => "#{current_temp} &deg;#{temperature_units}",
-                          :condition => detailed_info['main'],
+                          :condition => detailed_info['description'],
                           :title => "#{weather_data['name']} Weather",
                           :color => color_temperature(current_temp),
                           :climacon => climacon_class(detailed_info['id'])})
